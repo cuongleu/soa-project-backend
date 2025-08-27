@@ -11,8 +11,8 @@ services:
       - FLASK_DEBUG=1
       - APP_SETTINGS=project.config.DevelopmentConfig
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
-      - DB_URL=${DB_URL:-db}
+      - DB_PASSWORD=$7t<5[[HB|ZCiZxUOum*R<0O8]OH
+      - DB_URL=database-1.cwvyk0usmv0e.us-east-1.rds.amazonaws.com
       - DB_PORT=${DB_PORT:-5432}
       - DB_NAME=${DB_NAME:-dev}
       - SECRET_KEY=my_precious

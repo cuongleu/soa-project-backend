@@ -1,4 +1,4 @@
-name: CI/CD Pipeline - Independent Jobs
+name: CICD Pipeline - Independent Jobs
 
 on:
   push:
@@ -30,3 +30,4 @@ jobs:
       aws-account-id: "521159508736"
       aws-region: us-east-1
       service-type: codeland-api
+
