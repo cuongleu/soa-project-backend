@@ -31,8 +31,7 @@ env:
   ECS_TASK_DEFINITION: ./backend/taskdef_dev.json
   ENVIRONMENT: develop
   # TODO: Thay thế bằng giá trị môi trường của bạn
-  SECRET_ARN: rds!db-5d9f82d2-f2c5-467e-9b94-462be22f5508-YqTmgP
-  
+  SECRET_ARN: rds!db-043564ad-df67-4591-a698-5074b0189dff-6GAqK6
 
 permissions:
   id-token: write
@@ -44,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       deployment-status: ${{ steps.set-status.outputs.status }}
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -65,7 +64,7 @@ jobs:
         run: |
           SHORT_SHA=$(echo ${{ github.sha }} | cut -c1-7)
           echo "IMAGE_TAG=dev-${SHORT_SHA}" >> $GITHUB_ENV
-          
+
       - name: Set Image URI
         id: set-image
         run: |
@@ -94,7 +93,7 @@ jobs:
             --services ${{ env.ECS_SERVICE }} \
             --query "services[0].desiredCount" \
             --output text)
-          
+
           # If desired count current is 0, upate to 1
           if [ "$CURRENT_DESIRED_COUNT" -eq "0" ]; then
             echo "Current desired count is 0, will update to 1"
@@ -103,7 +102,7 @@ jobs:
             echo "Current desired count is ${CURRENT_DESIRED_COUNT}, keeping it unchanged"
             DESIRED_COUNT=$CURRENT_DESIRED_COUNT
           fi
-          
+
           echo "DESIRED_COUNT=${DESIRED_COUNT}" >> $GITHUB_ENV
           echo "Final desired count will be: ${DESIRED_COUNT}"
 
